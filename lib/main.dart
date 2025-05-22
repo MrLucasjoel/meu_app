@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meu_app/Botao.dart';
+import 'package:meu_app/inherited/UserInfos.dart';
 import 'package:meu_app/statefull/Contador.dart';
+import 'package:meu_app/statefull/DarkMode.dart';
+import 'package:meu_app/statefull/RandomNumber.dart';
 import 'package:meu_app/stateless/SemEstado.dart';
 import 'package:meu_app/stateless/User.dart';
 
@@ -45,10 +48,22 @@ void main(){
 
 void main(){
   //runApp(User());
-  //EXEMPLO STATEFULL
-  runApp(MaterialApp(
-    home: Contador(), 
-  ));
+
+  //--EXEMPLO STATEFULL
+  //runApp(MaterialApp(
+    //home: Contador(), 
+  //));
+
+  //runApp(DarkMode());
+
+  //runApp(RandomNumber());
+
+  runApp(UserInfos());
+
+
+
+
+
 }
 
 
