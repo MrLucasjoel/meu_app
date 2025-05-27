@@ -131,6 +131,8 @@ class GameButton extends StatelessWidget {
   }
 }
 
+      //TRUCO....
+
 class TrucoPage extends StatefulWidget {
   const TrucoPage({super.key});
 
@@ -139,24 +141,45 @@ class TrucoPage extends StatefulWidget {
 }
 
 class _TrucoPageState extends State<TrucoPage> {
-  int pontosA = 0;
-  int pontosB = 0;
+  final Map<String, int> _pontos = {
+    'Time A': 0,
+    'Time B': 0,
+  };
 
-  void resetar() {
+  void alterarPontos(String jogador, int delta) {
     setState(() {
-      pontosA = 0;
-      pontosB = 0;
+      _pontos[jogador] = (_pontos[jogador]! + delta).clamp(0, 12);
+      if (_pontos[jogador] == 12) {
+        mostrarComemoracao(jogador);
+      }
     });
   }
 
-  void alterarPontos(String time, int delta) {
+  void resetar() {
     setState(() {
-      if (time == 'A') {
-        pontosA = (pontosA + delta).clamp(0, 12);
-      } else {
-        pontosB = (pontosB + delta).clamp(0, 12);
+      for (var key in _pontos.keys) {
+        _pontos[key] = 0;
       }
     });
+  }
+
+  void mostrarComemoracao(String vencedor) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('🎉 Vitória!'),
+        content: Text('$vencedor venceu o jogo!'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              resetar();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -171,51 +194,52 @@ class _TrucoPageState extends State<TrucoPage> {
           ),
         ],
       ),
-      body: buildPontuacao(),
-    );
-  }
+      body: ListView.builder(
+        padding: const EdgeInsets.all(20),
+        itemCount: _pontos.length,
+        itemBuilder: (context, index) {
+          String jogador = _pontos.keys.elementAt(index);
+          int pontos = _pontos[jogador]!;
 
-  Widget buildPontuacao() {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          buildTimeCard('Time A', pontosA, () => alterarPontos('A', 1), () => alterarPontos('A', -1)),
-          const SizedBox(height: 30),
-          buildTimeCard('Time B', pontosB, () => alterarPontos('B', 1), () => alterarPontos('B', -1)),
-        ],
-      ),
-    );
-  }
-
-  Widget buildTimeCard(String nome, int pontos, VoidCallback onAdd, VoidCallback onRemove) {
-    return Card(
-      elevation: 6,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-        child: Column(
-          children: [
-            Text(
-              nome,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          return Card(
+            margin: const EdgeInsets.symmetric(vertical: 12),
+            elevation: 6,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+              child: Column(
+                children: [
+                  Text(
+                    jogador,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    '$pontos',
+                    style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () => alterarPontos(jogador, -1),
+                        icon: const Icon(Icons.remove_circle),
+                        color: Colors.red,
+                      ),
+                      const SizedBox(width: 20),
+                      IconButton(
+                        onPressed: () => alterarPontos(jogador, 1),
+                        icon: const Icon(Icons.add_circle),
+                        color: Colors.green,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
-            Text(
-              '$pontos',
-              style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(onPressed: onRemove, icon: const Icon(Icons.remove_circle), color: Colors.red),
-                const SizedBox(width: 20),
-                IconButton(onPressed: onAdd, icon: const Icon(Icons.add_circle), color: Colors.green),
-              ],
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }
@@ -231,28 +255,39 @@ class CachetaPage extends StatefulWidget {
 }
 
 class _CachetaPageState extends State<CachetaPage> {
-  int pontosA = 0;
-  int pontosB = 0;
+  final Map<String, int> _pontos = {
+    'A': 0,
+    'B': 0,
+    'C': 0,
+    'D': 0,
+    'E': 0,
+  };
 
   void resetar() {
     setState(() {
-      pontosA = 0;
-      pontosB = 0;
+      for (var jogador in _pontos.keys) {
+        _pontos[jogador] = 0;
+      }
     });
   }
 
-  void alterarPontos(String time, int delta) {
+  void alterarPontos(String jogador, int delta) {
     setState(() {
-      if (time == 'A') {
-        pontosA = (pontosA + delta).clamp(0, 100);
-      } else {
-        pontosB = (pontosB + delta).clamp(0, 100);
-      }
+      _pontos[jogador] = (_pontos[jogador]! + delta).clamp(0, 12);
+      
+      // Verifica vitória
+if (_pontos[jogador] == 12) {
+  Future.delayed(Duration(milliseconds: 300), () {
+    mostrarComemoracao(jogador);
+  });
+}
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final jogadores = _pontos.keys.toList();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cacheta - Marcador'),
@@ -265,18 +300,58 @@ class _CachetaPageState extends State<CachetaPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            buildTimeCard('Jogador A', pontosA, () => alterarPontos('A', 1), () => alterarPontos('A', -1)),
-            const SizedBox(height: 30),
-            buildTimeCard('Jogador B', pontosB, () => alterarPontos('B', 1), () => alterarPontos('B', -1)),
-          ],
+        child: ListView.builder(
+          itemCount: jogadores.length,
+          itemBuilder: (context, index) {
+            final jogador = jogadores[index];
+            final pontos = _pontos[jogador]!;
+
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: buildTimeCard(
+                'Jogador $jogador',
+                pontos,
+                () => alterarPontos(jogador, 1),
+                () => alterarPontos(jogador, -1),
+              ),
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget buildTimeCard(String nome, int pontos, VoidCallback onAdd, VoidCallback onRemove) {
+  void mostrarComemoracao(String jogador) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        backgroundColor: Colors.green[100],
+        title: const Text(
+          '🎉 Vitória!',
+          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        ),
+        content: Text(
+          'Jogador $jogador venceu com 12 pontos!',
+          style: const TextStyle(fontSize: 20),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              resetar();
+            },
+            child: const Text('Reiniciar'),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+  Widget buildTimeCard(
+      String nome, int pontos, VoidCallback onAdd, VoidCallback onRemove) {
     return Card(
       elevation: 6,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -297,9 +372,17 @@ class _CachetaPageState extends State<CachetaPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(onPressed: onRemove, icon: const Icon(Icons.remove_circle), color: Colors.red),
+                IconButton(
+                  onPressed: onRemove,
+                  icon: const Icon(Icons.remove_circle),
+                  color: Colors.red,
+                ),
                 const SizedBox(width: 20),
-                IconButton(onPressed: onAdd, icon: const Icon(Icons.add_circle), color: Colors.green),
+                IconButton(
+                  onPressed: onAdd,
+                  icon: const Icon(Icons.add_circle),
+                  color: Colors.green,
+                ),
               ],
             )
           ],
@@ -308,6 +391,7 @@ class _CachetaPageState extends State<CachetaPage> {
     );
   }
 }
+
 
           //DOMINÓ....
 
@@ -319,24 +403,47 @@ class DominoPage extends StatefulWidget {
 }
 
 class _DominoPageState extends State<DominoPage> {
-  int pontosA = 0;
-  int pontosB = 0;
+  final Map<String, int> _pontos = {
+    'Time A': 0,
+    'Time B': 0,
+  };
 
-  void resetar() {
+  final int limitePontos = 100;
+
+  void alterarPontos(String jogador, int delta) {
     setState(() {
-      pontosA = 0;
-      pontosB = 0;
+      _pontos[jogador] = (_pontos[jogador]! + delta).clamp(0, limitePontos);
+      if (_pontos[jogador] == limitePontos) {
+        mostrarComemoracao(jogador);
+      }
     });
   }
 
-  void alterarPontos(String time, int delta) {
+  void resetar() {
     setState(() {
-      if (time == 'A') {
-        pontosA = (pontosA + delta).clamp(0, 200);
-      } else {
-        pontosB = (pontosB + delta).clamp(0, 200);
+      for (var key in _pontos.keys) {
+        _pontos[key] = 0;
       }
     });
+  }
+
+  void mostrarComemoracao(String vencedor) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text('🎊 Vitória no Dominó!'),
+        content: Text('$vencedor venceu com $limitePontos pontos!'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              resetar();
+            },
+            child: const Text('OK'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -351,47 +458,52 @@ class _DominoPageState extends State<DominoPage> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            buildTimeCard('Dupla A', pontosA, () => alterarPontos('A', 1), () => alterarPontos('A', -1)),
-            const SizedBox(height: 30),
-            buildTimeCard('Dupla B', pontosB, () => alterarPontos('B', 1), () => alterarPontos('B', -1)),
-          ],
-        ),
-      ),
-    );
-  }
+      body: ListView.builder(
+        padding: const EdgeInsets.all(20),
+        itemCount: _pontos.length,
+        itemBuilder: (context, index) {
+          String jogador = _pontos.keys.elementAt(index);
+          int pontos = _pontos[jogador]!;
 
-  Widget buildTimeCard(String nome, int pontos, VoidCallback onAdd, VoidCallback onRemove) {
-    return Card(
-      elevation: 6,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
-        child: Column(
-          children: [
-            Text(
-              nome,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          return Card(
+            margin: const EdgeInsets.symmetric(vertical: 12),
+            elevation: 6,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+              child: Column(
+                children: [
+                  Text(
+                    jogador,
+                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    '$pontos',
+                    style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () => alterarPontos(jogador, -1),
+                        icon: const Icon(Icons.remove_circle),
+                        color: Colors.red,
+                      ),
+                      const SizedBox(width: 20),
+                      IconButton(
+                        onPressed: () => alterarPontos(jogador, 1),
+                        icon: const Icon(Icons.add_circle),
+                        color: Colors.green,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
-            Text(
-              '$pontos',
-              style: const TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(onPressed: onRemove, icon: const Icon(Icons.remove_circle), color: Colors.red),
-                const SizedBox(width: 20),
-                IconButton(onPressed: onAdd, icon: const Icon(Icons.add_circle), color: Colors.green),
-              ],
-            )
-          ],
-        ),
+          );
+        },
       ),
     );
   }
