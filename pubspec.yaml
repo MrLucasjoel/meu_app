@@ -1,19 +1,27 @@
 name: meu_app
-description: "A new Flutter project."
-publish_to: 'none'
-version: 0.1.0
+description: Um novo app Flutter
+version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.2
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  # outras dependências aqui...
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.13.1  # ou a versão mais recente
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/icon/
