@@ -1,0 +1,55 @@
+MaterialApp é um widget fundamental no flutter que configura a estrutura básica
+de um aplicativo seguindo as diretrizes de design do material design (o sistema de 
+design criado pela Google).
+
+Funções principais do MaterialApp
+-> define o tema (theme, darkTheme)
+-> gerencia navegação e rotas (home, routes, onGenerateRoute)
+-> controla o título da aplicação
+-> suporte a intercionalização
+-> define o widget principal da tela inicial
+
+Scaffold (pertencente ao MaterialApp)
+
+O Scaffold é outro widget essencial no flutter. ele fornece a 
+estrutura visual básica de uma tela em um aplicativo que usa MaterialApp
+
+o que o scaffold oferece:
+-> AppBar (vbarra superior)
+-> Drawer (menu lateral)
+-> BottomNavigationbar (barra de navegação inferior)
+-> FloatingActionButton (botão flutuante)
+-> body (conteúdo principal da tela)
+
+CUPERTINO
+
+o cupertino no flutter é o conjunto de widgets que reproduzem fielmente o visual e o comportamento do iOS (apple), seguindo as diretrizes de HIG (Human Interface Guidelines) da Apple
+
+objetivos do cupertino
+-> recriar componentes nativos do iOS
+-> fornecer uma experiência visual consistente para usuários iphone/ipad
+-> Substituir widgets do Material por equivalentes no iOS
+
+CupertinoPageScaffold
+é um widget do cupertino usado para criar interfaces no estilo iOS
+ele fornece uma estrutura básica de uma página no estilo iOS, similar ao scaffold
+
+objetivos
+-> criar páginas com vísual nativo iOS
+-> gerenciar nativamente o SafeArea (iOS)
+-> permitir navegação fluida no estilo cupertino
+
+EXERCÍCIO
+
+CRIE UM NOVO APLICATIVO DO ZERO
+
+O APLICATIVO PRECISA USAR MATERIAL APP
+DEVERÁ TER UMA INTERFACE COM AS SEGUINTES CARACTERÍSTICAS
+-> TITULO NA APPBAR
+-> MENU DE NAVEGAÇÃO LATERAL (DRAWER)
+    -> INSIRA O TÍTULO DO MENU
+    -> INSIRA 5 OPÇÕES DE MENU
+-> O CORPO DO APP DEVERÁ TER
+    -> MENSAGEM DE BOAS VINDAS
+-> INSIRA UM RODAPÉ
+-> O APLICATIVO DEVERÁ TER A OPÇÃO DE DARK E LIGHT MODE

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meu_app/Botao.dart';
+import 'package:meu_app/MaterialWidget/MyMaterial.dart';
 import 'package:meu_app/exercicios/Loja.dart';
+import 'package:meu_app/exercicios/Menu.dart';
 import 'package:meu_app/trucoMarcador/Truco.dart';
 import 'package:meu_app/inherited/UserInfos.dart';
 import 'package:meu_app/statefull/Contador.dart';
@@ -64,7 +66,11 @@ void main(){
 
   //runApp(const Loja());
 
-  runApp(const GameScoreApp());
+  //runApp(const GameScoreApp());
+
+  //runApp(MyMaterial());
+
+  runApp(Menu());
 
 
 
