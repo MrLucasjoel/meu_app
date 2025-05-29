@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:meu_app/Botao.dart';
 import 'package:meu_app/MaterialWidget/MyMaterial.dart';
 import 'package:meu_app/cupertino/MyCupertino.dart';
+import 'package:meu_app/exercicios/ExercicioMaterial.dart';
 import 'package:meu_app/exercicios/Loja.dart';
 import 'package:meu_app/exercicios/Menu.dart';
+import 'package:meu_app/testLucas/Loja1.dart';
 import 'package:meu_app/trucoMarcador/Truco.dart';
 import 'package:meu_app/inherited/UserInfos.dart';
 import 'package:meu_app/statefull/Contador.dart';
@@ -72,18 +74,20 @@ void main(){
 
   //runApp(MyMaterial());
 
-  //runApp(Menu());
+  // runApp(Menu());
+
+  runApp(Loja1());
 
 //Cupertino
   // runApp(Mycupertino());
 
   //como decidir qual widget usar?
 
-  if(Platform.isAndroid){
-    runApp(MyMaterial());
-  }else{
-    runApp(Mycupertino());
-  }
+  // if(Platform.isAndroid){
+  //   runApp(MyMaterial());
+  // }else{
+  //   runApp(Mycupertino());
+  // }
 
 
 

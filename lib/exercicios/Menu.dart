@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:meu_app/trucoMarcador/Truco.dart';
 
 void main() {
   runApp(const Menu());
