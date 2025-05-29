@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:meu_app/trucoMarcador/Truco.dart';
 
 void main() {
   runApp(const Menu());
@@ -28,7 +30,7 @@ class _MenuState extends State<Menu> {
       theme: ThemeData(
         brightness: Brightness.light,
         primarySwatch: Colors.teal,
-        scaffoldBackgroundColor: const Color.fromARGB(255, 5, 151, 107),
+        scaffoldBackgroundColor: const Color.fromARGB(255, 103, 223, 187),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
@@ -67,10 +69,38 @@ class MyMenu extends StatelessWidget {
         child: ListView(
           children: const [
             DrawerHeader(child: Text("Menu")),
-            ListTile(title: Text("HOME")),
-            ListTile(title: Text("PRODUTOS")),
-            ListTile(title: Text("SERVIÇOS")),
-            ListTile(title: Text("CONTATO")),
+            ListTile(
+              title: Text("HOME"),
+              subtitle: Text("Pagina Inicial"),
+              leading: Icon(Icons.home),
+              ),
+
+              ListTile(
+              title: Text("Perfil"),
+              subtitle: Text("Acount"),
+              leading: Icon(Icons.circle),
+              
+              ),
+
+            ListTile(title: Text("PRODUTOS"),
+              subtitle: Text("Livros"),
+              leading: Icon(Icons.book)
+            ),
+
+            ListTile(title: Text("SERVIÇOS"),
+              subtitle: Text("Configurações"),
+              leading: Icon(Icons.settings)
+            ),
+
+            ListTile(title: Text("CONTATO"),
+              subtitle: Text("(47) 99180-5041"),
+              leading: Icon(Icons.phone),
+            ),
+
+            ListTile(title: Text("Logout"),
+              subtitle: Text("Sair"),
+              leading: Icon(Icons.logout),
+            ),
           ],
         ),
       ),

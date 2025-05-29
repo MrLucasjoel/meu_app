@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meu_app/Botao.dart';
 import 'package:meu_app/MaterialWidget/MyMaterial.dart';
+import 'package:meu_app/cupertino/MyCupertino.dart';
 import 'package:meu_app/exercicios/Loja.dart';
 import 'package:meu_app/exercicios/Menu.dart';
 import 'package:meu_app/trucoMarcador/Truco.dart';
@@ -10,6 +11,7 @@ import 'package:meu_app/statefull/DarkMode.dart';
 import 'package:meu_app/statefull/RandomNumber.dart';
 import 'package:meu_app/stateless/SemEstado.dart';
 import 'package:meu_app/stateless/User.dart';
+import 'dart:io';
 
 /*
 void main() {
@@ -70,7 +72,18 @@ void main(){
 
   //runApp(MyMaterial());
 
-  runApp(Menu());
+  //runApp(Menu());
+
+//Cupertino
+  // runApp(Mycupertino());
+
+  //como decidir qual widget usar?
+
+  if(Platform.isAndroid){
+    runApp(MyMaterial());
+  }else{
+    runApp(Mycupertino());
+  }
 
 
 
