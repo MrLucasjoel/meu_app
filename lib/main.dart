@@ -15,6 +15,8 @@ import 'package:meu_app/stateless/SemEstado.dart';
 import 'package:meu_app/stateless/User.dart';
 import 'dart:io';
 
+import 'package:meu_app/widgetsLayout/LayoutApp.dart';
+
 /*
 void main() {
   runApp(Container(
@@ -76,19 +78,20 @@ void main(){
 
   // runApp(Menu());
 
-  runApp(Loja1());
+  // runApp(Loja1());
 
 //Cupertino
   // runApp(Mycupertino());
 
   //como decidir qual widget usar?
 
-  // if(Platform.isAndroid){
-  //   runApp(MyMaterial());
-  // }else{
-  //   runApp(Mycupertino());
-  // }
+  /* if(Platform.isAndroid){
+    runApp(MyMaterial());
+  }else{
+    runApp(Mycupertino());
+  } */
 
+runApp(Layoutapp());
 
 
 }
