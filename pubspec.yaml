@@ -23,6 +23,10 @@ flutter_icons:
 
 flutter:
   uses-material-design: true
-
+  fonts:
+    - family: AlumnSansSC #fonts baixadas manual e imagens
+      fonts:
+       - asset: assets\fonts\AlumniSansSC-Italic-VariableFont_wght.ttf
+       - asset: assets\fonts\AlumniSansSC-VariableFont_wght.ttf
   assets:
     - assets/icon/
