@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meu_app/widgetsLayout/WidgetColumn.dart';
-import 'package:meu_app/widgetsLayout/WidgetContainer.dart';
 import 'package:meu_app/widgetsLayout/WidgetRow.dart';
 
 class Layoutapp extends StatelessWidget {

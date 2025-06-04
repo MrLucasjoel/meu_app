@@ -6,12 +6,13 @@ class Tela3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Tela 3")),
+      appBar: AppBar(title: const Text("tela 3")),
         body: Center(
           child: ElevatedButton(
             onPressed:() {
               Navigator.pop(context);
-          }, child: null,
+          }, 
+          child: Text('voltar para tela 2'),
         ),
       )
     );

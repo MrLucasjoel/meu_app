@@ -6,7 +6,7 @@ class Tela2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Tela 2"),),
+      appBar: AppBar(title: Text("tela 2"),),
       body:  Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -14,13 +14,13 @@ class Tela2 extends StatelessWidget {
             ElevatedButton(
               child: const Text("ir para tela 3"),
               onPressed: () {
-              NavigationBar.pushNamed(context, '/Tela3'),
+              Navigator.pushNamed(context, '/tela3');
               },
             ),
             ElevatedButton(
-              child:Text("Ir para a tela 1"),
-              onPressed: (){
-                Navigator.pushNamed(context, '/'),
+              child:Text("ir para tela 1"),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/');
               }
             )
           ],

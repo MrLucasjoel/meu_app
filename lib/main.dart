@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:meu_app/Botao.dart';
-import 'package:meu_app/Debug.dart';
-import 'package:meu_app/MaterialWidget/MyMaterial.dart';
-import 'package:meu_app/cupertino/MyCupertino.dart';
-import 'package:meu_app/exercicios/ExercicioMaterial.dart';
-import 'package:meu_app/exercicios/Loja.dart';
-import 'package:meu_app/exercicios/Menu.dart';
+// import 'package:meu_app/Botao.dart';
+// import 'package:meu_app/Debug.dart';
+// import 'package:meu_app/MaterialWidget/MyMaterial.dart';
+// import 'package:meu_app/cupertino/MyCupertino.dart';
+// import 'package:meu_app/exercicios/ExercicioMaterial.dart';
+// import 'package:meu_app/exercicios/Loja.dart';
+// import 'package:meu_app/exercicios/Menu.dart';
 import 'package:meu_app/navegacao/Routes.dart';
-import 'package:meu_app/navegacao/Tela1.dart';
-import 'package:meu_app/testLucas/Loja1.dart';
-import 'package:meu_app/trucoMarcador/Truco.dart';
-import 'package:meu_app/inherited/UserInfos.dart';
-import 'package:meu_app/statefull/Contador.dart';
-import 'package:meu_app/statefull/DarkMode.dart';
-import 'package:meu_app/statefull/RandomNumber.dart';
-import 'package:meu_app/stateless/SemEstado.dart';
-import 'package:meu_app/stateless/User.dart';
-import 'package:meu_app/usandoAssts/Fonts.dart';
-import 'package:meu_app/usandoAssts/Imagem.dart';
-import 'dart:io';
+// import 'package:meu_app/navegacao/Tela1.dart';
+// import 'package:meu_app/testLucas/Loja1.dart';
+// import 'package:meu_app/trucoMarcador/Truco.dart';
+// import 'package:meu_app/inherited/UserInfos.dart';
+// import 'package:meu_app/statefull/Contador.dart';
+// import 'package:meu_app/statefull/DarkMode.dart';
+// import 'package:meu_app/statefull/RandomNumber.dart';
+// import 'package:meu_app/stateless/SemEstado.dart';
+// import 'package:meu_app/stateless/User.dart';
+// import 'package:meu_app/usandoAssts/Fonts.dart';
+// import 'package:meu_app/usandoAssts/Imagem.dart';
+// import 'dart:io';
 
-import 'package:meu_app/widgetsLayout/LayoutApp.dart';
+// import 'package:meu_app/widgetsLayout/LayoutApp.dart';
 
 /*
 void main() {
@@ -105,7 +105,7 @@ void main(){
 
 
 //NAVEGANDO ENTRE TELAS
-runApp(MaterialApp(home: Tela1(),));
+//runApp(MaterialApp(home: Tela1(),));
 
 runApp(Routes());
 
