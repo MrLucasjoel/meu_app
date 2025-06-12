@@ -30,3 +30,4 @@ flutter:
        - asset: assets\fonts\AlumniSansSC-VariableFont_wght.ttf
   assets:
     - assets/icon/
+    - assets/imagens/data.json

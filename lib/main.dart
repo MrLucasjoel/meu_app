@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meu_app/dartAvancado/isolate/product_parse.dart';
+// import 'package:meu_app/dartAvancado/future/login.dart';
+// import 'package:meu_app/dartAvancado/stream/busca_com_stream.dart';
 // import 'package:meu_app/Botao.dart';
 // import 'package:meu_app/Debug.dart';
 // import 'package:meu_app/MaterialWidget/MyMaterial.dart';
@@ -6,7 +9,7 @@ import 'package:flutter/material.dart';
 // import 'package:meu_app/exercicios/ExercicioMaterial.dart';
 // import 'package:meu_app/exercicios/Loja.dart';
 // import 'package:meu_app/exercicios/Menu.dart';
-import 'package:meu_app/navegacao/Routes.dart';
+// import 'package:meu_app/navegacao/Routes.dart';
 // import 'package:meu_app/navegacao/Tela1.dart';
 // import 'package:meu_app/testLucas/Loja1.dart';
 // import 'package:meu_app/trucoMarcador/Truco.dart';
@@ -107,7 +110,14 @@ void main(){
 //NAVEGANDO ENTRE TELAS
 //runApp(MaterialApp(home: Tela1(),));
 
-runApp(Routes());
+//runApp(Routes());
+
+//runApp(MaterialApp(home: Login()));
+//runApp(MaterialApp(home: BuscaComStream()));
+
+runApp(MaterialApp(home: ProductParse()));
+
+
 
 }
 
